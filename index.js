@@ -1,17 +1,14 @@
 const btn = document.getElementById("submit-btn");
 const emailInput = document.getElementById("email-input");
 const errorText = document.getElementById("error-text");
-const errorIcon = document.getElementById("error-icon");
+
+const inputGrp = document.getElementById("input-group");
 
 const showErrorMsg = () => {
-  errorText.style.bottom = "-2rem";
-  emailInput.style.border = "2px solid hsl(0, 93%, 68%)";
-  errorIcon.style.opacity = "1";
+  inputGrp.classList.toggle("hero-content__input-group--invalid");
 
   setTimeout(() => {
-    errorText.style.bottom = "2rem";
-    emailInput.style.border = "1px solid hsl(0, 36%, 70%)";
-    errorIcon.style.opacity = "0";
+    inputGrp.classList.toggle("hero-content__input-group--invalid");
   }, 1000);
 };
 

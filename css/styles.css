@@ -34,8 +34,11 @@ main {
   height: -moz-fit-content;
   height: fit-content;
   background-image: url("../images/bg-pattern-desktop.svg");
+  background-position: left bottom;
+  background-repeat: no-repeat;
   display: grid;
   grid-template-areas: "logo" "hero-img" "hero-content";
+  place-content: center;
 }
 @media (min-width: 1140px) {
   main {
@@ -57,11 +60,11 @@ main {
     padding-block: 6.4rem;
   }
 }
-.logo img {
+.logo__img {
   height: 2.1rem;
 }
 @media (min-width: 1140px) {
-  .logo img {
+  .logo__img {
     height: 3.2rem;
   }
 }
@@ -70,22 +73,18 @@ main {
   grid-area: hero-img;
   width: 100%;
 }
-.hero-img img {
-  width: 100%;
+.hero-img__mbl-img {
+  width: min(500px, 100%);
+  margin: 0 auto;
 }
-.hero-img img:nth-child(2) {
+.hero-img__dt-img {
   display: none;
 }
 @media (min-width: 1140px) {
-  .hero-img img {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-  }
-  .hero-img img:nth-child(1) {
+  .hero-img__mbl-img {
     display: none;
   }
-  .hero-img img:nth-child(2) {
+  .hero-img__dt-img {
     display: block;
   }
 }
@@ -129,7 +128,7 @@ main {
   letter-spacing: 1.6rem;
   color: hsl(0deg, 36%, 70%);
 }
-.hero-content p {
+.hero-content__subtitle {
   margin: 0 auto;
   width: min(100%, 42ch);
   line-height: 2.2rem;
@@ -137,53 +136,56 @@ main {
   color: hsl(0deg, 36%, 70%);
 }
 @media (min-width: 1140px) {
-  .hero-content p {
+  .hero-content__subtitle {
     margin: 0;
     margin-bottom: 4.8rem;
+    line-height: 2.8rem;
   }
 }
 .hero-content__input-group {
   height: 4.8rem;
+  width: min(500px, 100%);
+  margin: 0 auto;
   position: relative;
   margin-bottom: 6.4rem;
   font-size: 1.4rem;
 }
 @media (min-width: 1140px) {
   .hero-content__input-group {
+    margin: 0;
     width: 44.5rem;
     height: 5.6rem;
   }
 }
-.hero-content__input-group input {
+.hero-content__input-group__email {
   z-index: 1;
   width: 100%;
   height: 100%;
   color: hsl(0deg, 36%, 70%);
   border: 1px solid hsl(0deg, 36%, 70%);
-  background: linear-gradient(135deg, hsl(0deg, 0%, 100%), hsl(0deg, 100%, 98%));
   border-radius: 5rem;
   padding-right: 6.8rem;
   padding-left: 2.4rem;
 }
 @media (min-width: 1140px) {
-  .hero-content__input-group input {
+  .hero-content__input-group__email {
     padding-right: 10rem;
   }
 }
-.hero-content__input-group input::-moz-placeholder {
+.hero-content__input-group__email::-moz-placeholder {
   color: #debaba;
 }
-.hero-content__input-group input:-ms-input-placeholder {
+.hero-content__input-group__email:-ms-input-placeholder {
   color: #debaba;
 }
-.hero-content__input-group input::placeholder {
+.hero-content__input-group__email::placeholder {
   color: #debaba;
 }
-.hero-content__input-group input:focus {
+.hero-content__input-group__email:focus {
   border: 2px solid hsl(0deg, 36%, 70%);
   outline: none;
 }
-.hero-content__input-group span {
+.hero-content__input-group__error-msg {
   position: absolute;
   z-index: -1;
   bottom: 2rem;
@@ -191,7 +193,7 @@ main {
   transition: bottom 250ms ease-in;
   color: hsl(0deg, 93%, 68%);
 }
-.hero-content__input-group > img {
+.hero-content__input-group__error-icon {
   position: absolute;
   z-index: 3;
   top: 50%;
@@ -201,11 +203,11 @@ main {
   transition: opacity 250ms ease-in-out;
 }
 @media (min-width: 1140px) {
-  .hero-content__input-group > img {
+  .hero-content__input-group__error-icon {
     right: 10.5rem;
   }
 }
-.hero-content__input-group button {
+.hero-content__input-group__btn {
   position: absolute;
   z-index: 2;
   right: 0;
@@ -223,14 +225,23 @@ main {
   transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out;
 }
 @media (min-width: 1140px) {
-  .hero-content__input-group button {
+  .hero-content__input-group__btn {
     width: 10rem;
   }
-  .hero-content__input-group button:hover {
+  .hero-content__input-group__btn:hover {
     transform: translateX(1rem);
     background-image: linear-gradient(135deg, hsl(0deg, 80%, 90%), hsl(0deg, 74%, 80%));
     box-shadow: -4px 8px 10px 0 hsla(0deg, 80%, 85%, 0.5);
   }
+}
+.hero-content__input-group--invalid .hero-content__input-group__email {
+  border: 2px solid hsl(0deg, 93%, 68%);
+}
+.hero-content__input-group--invalid .hero-content__input-group__error-msg {
+  bottom: -2rem;
+}
+.hero-content__input-group--invalid .hero-content__input-group__error-icon {
+  opacity: 1;
 }
 
 .attribution {

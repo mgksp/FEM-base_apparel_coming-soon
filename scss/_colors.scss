@@ -9,3 +9,7 @@ $dk-grayish-red: hsl(0, 6%, 24%);
 $g1: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
 $g2: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
 $g2-hover: linear-gradient(135deg, hsl(0, 80%, 90%), hsl(0, 74%, 80%));
+
+// Box shadows
+$bs: -1px 4px 10px 0 hsla(0, 80%, 85%, 0.2);
+$bs-hover: -4px 8px 10px 0 hsla(0, 80%, 85%, 0.5);
