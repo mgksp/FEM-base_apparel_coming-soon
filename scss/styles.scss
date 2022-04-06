@@ -1,7 +1,218 @@
+@use "reset";
+@use "colors" as *;
+@use "breakpoints" as *;
+
+body {
+  font-size: 1.4rem;
+  font-family: "Josefin Sans", sans-serif;
+  background-image: $g1;
+
+  @include breakpoint(medium) {
+    font-size: 1.6rem;
+  }
+}
+
+main {
+  height: fit-content;
+  background-image: url("../images/bg-pattern-desktop.svg");
+  display: grid;
+  grid-template-areas: "logo" "hero-img" "hero-content";
+
+  @include breakpoint(medium) {
+    grid-template-areas:
+      "logo hero-img"
+      "hero-content hero-img";
+    grid-template-rows: min-content 1fr;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+.logo {
+  grid-area: logo;
+  padding: 3.2rem;
+
+  @include breakpoint(large) {
+    padding-left: 16.4rem;
+    padding-block: 6.4rem;
+  }
+
+  img {
+    height: 2.1rem;
+
+    @include breakpoint(medium) {
+      height: 3.2rem;
+    }
+  }
+}
+
+.hero-img {
+  grid-area: hero-img;
+  width: 100%;
+
+  img {
+    width: 100%;
+
+    &:nth-child(2) {
+      display: none;
+    }
+
+    @include breakpoint(medium) {
+      width: fit-content;
+      &:nth-child(1) {
+        display: none;
+      }
+      &:nth-child(2) {
+        display: block;
+      }
+    }
+  }
+}
+
+.hero-content {
+  grid-area: hero-content;
+  text-align: center;
+  padding-top: 6.6rem;
+  padding-inline: 3.2rem;
+
+  @include breakpoint(medium) {
+    text-align: left;
+  }
+  @include breakpoint(large) {
+    padding-top: 6.4rem;
+    padding-left: 16.4rem;
+  }
+
+  &__title {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8rem;
+    line-height: 4.2rem;
+    font-weight: 400;
+    color: $dk-grayish-red;
+    margin-bottom: 2rem;
+
+    @include breakpoint(medium) {
+      font-size: 6.4rem;
+      line-height: 6.8rem;
+      font-weight: 600;
+      margin-bottom: 2.6rem;
+    }
+
+    span {
+      font-weight: 300;
+      letter-spacing: 1.6rem;
+      color: $desaturated-red;
+    }
+  }
+
+  p {
+    margin: 0 auto;
+    width: min(100%, 42ch);
+    line-height: 2.2rem;
+    margin-bottom: 3.2rem;
+    color: $desaturated-red;
+
+    @include breakpoint(medium) {
+      margin: 0;
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  &__input-group {
+    height: 4.8rem;
+    position: relative;
+    margin-bottom: 6.4rem;
+    font-size: 1.4rem;
+
+    @include breakpoint(medium) {
+      width: 44.5rem;
+    }
+
+    input {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $desaturated-red;
+      border-radius: 5rem;
+      padding-right: 6.8rem;
+      padding-left: 2.4rem;
+
+      @include breakpoint(medium) {
+        padding-right: 10rem;
+      }
+
+      &:focus {
+        border: 2px solid $desaturated-red;
+        outline: none;
+      }
+    }
+
+    span {
+      position: absolute;
+      z-index: -1;
+      bottom: 2rem;
+      left: 2.4rem;
+      transition: bottom 250ms ease-in;
+      color: $soft-red;
+    }
+
+    & > img {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      right: 6.85rem;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
+
+      @include breakpoint(medium) {
+        right: 10.5rem;
+      }
+    }
+
+    button {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 6.4rem;
+      border-radius: 5rem;
+      border: none;
+      outline: none;
+      display: grid;
+      place-content: center;
+      background-image: $g2;
+      cursor: pointer;
+      box-shadow: -1px 4px 10px 0 hsla(0, 80%, 85%, 0.2);
+      transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out;
+
+      @include breakpoint(medium) {
+        width: 10rem;
+
+        &:hover {
+          transform: translateX(1rem);
+          background-image: $g2-hover;
+          box-shadow: -4px 8px 10px 0 hsla(0, 80%, 85%, 0.5);
+        }
+      }
+    }
+  }
+}
+
 .attribution {
   font-size: 11px;
   text-align: center;
+  margin-bottom: 1rem;
+
+  @include breakpoint(medium) {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+
   a {
-    color: hsl(228, 45%, 44%);
+    color: $desaturated-red;
   }
 }
