@@ -26,9 +26,15 @@ const validateEmail = (email) => {
   if (error !== "") {
     errorText.textContent = error;
     showErrorMsg();
+    return false;
   }
+
+  return true;
 };
 
 btn.addEventListener("click", () => {
-  validateEmail(emailInput.value);
+  const isValid = validateEmail(emailInput.value);
+  if (isValid) {
+    window.location.replace("https://www.github.com/mgksp");
+  }
 });
